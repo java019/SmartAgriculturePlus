@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 public class Home_Fragment extends Fragment {
     //轮播图片
-    private int [] Carousel=new int[]{R.mipmap.img_carousel1,R.mipmap.img_carousel2,R.mipmap.img_carousel3};
+    private int [] Carousel=new int[]{R.mipmap.img_carousel3,R.mipmap.img_carousel1,R.mipmap.img_carousel2,R.mipmap.img_carousel3,R.mipmap.img_carousel1};
     private  boolean icon=true;
     //小圆点容器
     private LinearLayout circlecan;
@@ -44,6 +44,10 @@ public class Home_Fragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         initView();
         initViewPager();
+
+        viewPager.setOffscreenPageLimit(3);
+        viewPager.setPageMargin(40);
+        viewPager.setCurrentItem(1);
     }
 
 
@@ -62,9 +66,9 @@ public class Home_Fragment extends Fragment {
                     viewPager.setCurrentItem(Carousel.length-2,false);
 
                 }
-                else
+                else if(position== Carousel.length-1)
                 {
-                    viewPager.setCurrentItem(Carousel.length-1,false);
+                    viewPager.setCurrentItem(1,false);
                 }
                 setDotsImgs();
 
@@ -75,34 +79,34 @@ public class Home_Fragment extends Fragment {
 
             }
         });
-//        final Handler handler = new Handler()
-//        {
-//            @Override
-//            public void handleMessage(@NonNull Message msg) {
-//
-//                if (icon == true)
-//                {
-//                    if (msg.what == 0)
-//                    {
-//                        this.removeMessages(0);
-//                        viewPager.setCurrentItem(viewPager.getCurrentItem()+1,true);
-//                        this.sendEmptyMessageDelayed(0,2000);
-//
-//                    }
-//                }else if (icon == false)
-//                {
-//                    if ( this != null)
-//                    {
-//                        Toast.makeText(getContext(),"停止轮播", Toast.LENGTH_SHORT).show();
-//                        this.removeMessages(0);
-//                    }
-//
-//                }
-//
-//                super.handleMessage(msg);
-//            }
-//        };
-//        handler.sendEmptyMessageDelayed(0, 2000);
+        final Handler handler = new Handler()
+        {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+
+                if (icon == true)
+                {
+                    if (msg.what == 0)
+                    {
+                        this.removeMessages(0);
+                        viewPager.setCurrentItem(viewPager.getCurrentItem()+1,true);
+                        this.sendEmptyMessageDelayed(0,2000);
+
+                    }
+                }else if (icon == false)
+                {
+                    if ( this != null)
+                    {
+                        Toast.makeText(getContext(),"停止轮播", Toast.LENGTH_SHORT).show();
+                        this.removeMessages(0);
+                    }
+
+                }
+
+                super.handleMessage(msg);
+            }
+        };
+        handler.sendEmptyMessageDelayed(0, 2000);
 
         for (int i = 0;i<Carousel.length-2;i++)
         {
