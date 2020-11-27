@@ -33,5 +33,6 @@
     android:text="微信"
     android:textColor="#000"
     android:layout_gravity="center_horizontal"
+    android:layout_marginTop="3dp"
     android:textSize="12sp"/>
 </LinearLayout>

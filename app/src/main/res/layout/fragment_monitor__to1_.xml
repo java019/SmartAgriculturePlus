@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.Me_Fragment">
+    tools:context=".Monitor_Fragment.Monitor_To1_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -12,6 +12,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:textSize="55sp"
-        android:text="我的" />
+        android:text="温湿度" />
 
 </FrameLayout>

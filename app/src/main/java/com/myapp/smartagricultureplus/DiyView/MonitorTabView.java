@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,49 +11,28 @@ import androidx.annotation.Nullable;
 
 import com.myapp.smartagricultureplus.R;
 
-public class TabView extends FrameLayout {
-    private ImageView mIvicon;
-    private ImageView mIviconselect;
-    private TextView  te_tab_view;
+public class MonitorTabView extends FrameLayout {
 
+    private TextView  mTeMonitorSort;
     private static final  int COLOR_DEFAULT = Color.parseColor("#bfbfbf");
     private static final  int COLOR_SELECT = Color.parseColor("#1296db");
-    public TabView(@NonNull Context context, @Nullable AttributeSet attrs) {
+
+    public MonitorTabView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        inflate(context, R.layout.monitor_tab_view,this);
 
-        inflate(context, R.layout.tab_view,this);
-
-
-        /**
-         *  灰色在上
-         */
-
-        mIvicon = findViewById(R.id.iv_icon);
-        mIviconselect = findViewById(R.id.iv_icon_select);
-        te_tab_view = findViewById(R.id.tb_text);
-
-        setprogress(0);
+        mTeMonitorSort = findViewById(R.id.te_monitor_sort);
     }
-    //设置 icon和text
-    //第一种 抽取自定义属性，通过xml设置
-    //第二种 直接对外开放方法设置
 
-    public void  setIconandText(int icon,int iconselect,String text)
+    public void setText(String text)
     {
-        //这里我用的第二种方法
-        mIvicon.setImageResource(icon);
-        mIviconselect.setImageResource(iconselect);
-        te_tab_view.setText(text);
+        mTeMonitorSort.setText(text);
     }
-
-    public  void setprogress(float progrss)
+    public void setProgress(float progress)
     {
-        mIvicon.setAlpha(1-progrss);
-
-
-        mIviconselect.setAlpha(progrss);
-        te_tab_view.setTextColor(evaluate(progrss,COLOR_DEFAULT,COLOR_SELECT));
+        mTeMonitorSort.setTextColor(evaluate(progress,COLOR_DEFAULT,COLOR_SELECT));
     }
+    //渐变色
     private int evaluate(float fraction, int startValue, int endValue) {
         int startInt = (Integer) startValue;
         float startA = ((startInt >> 24) & 0xff) / 255.0f;

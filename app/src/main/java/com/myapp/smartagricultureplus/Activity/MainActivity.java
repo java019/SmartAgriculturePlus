@@ -25,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabView tb_wechat1, tb_wechat2, tb_wechat3, tb_wechat4;
+
     private List<String> mtitls = new ArrayList<>(Arrays.asList("首页", "检测", "控制", "我的"));
     private List<TabView> mtad = new ArrayList<>();
+
     private static final String BUNDLE_KEY_POS = "bundle_key_pos";
 
     private int mCurTabPos;
@@ -100,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
                         return me_fragment = new Me_Fragment();
                 }
 
-//                Tab_fragment fragment = Tab_fragment.newInstance(mtitls.get(position));
                 return home_fragment=new Home_Fragment();
             }
 
@@ -112,13 +113,11 @@ public class MainActivity extends AppCompatActivity {
             @NonNull
             @Override
             public Object instantiateItem(@NonNull ViewGroup container, int position) {
-//
                 return super.instantiateItem(container,position);
             }
 
             @Override
             public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-//                frag.remove(position);
                 super.destroyItem(container, position, object);
             }
         });

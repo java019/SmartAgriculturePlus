@@ -1,4 +1,4 @@
-package com.myapp.smartagricultureplus.Fragment;
+package com.myapp.smartagricultureplus.Monitor_Fragment;
 
 import android.os.Bundle;
 
@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 import com.myapp.smartagricultureplus.R;
 
 
-public class Home_Fragment extends Fragment {
+public class Monitor_To2_Fragment extends Fragment {
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+        return inflater.inflate(R.layout.fragment_monitor__to2_, container, false);
     }
 }
