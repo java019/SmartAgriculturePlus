@@ -24,25 +24,25 @@
         android:layout_height="56dp"
         >
 
-        <com.myapp.smartagricultureplus.TabView
+        <com.myapp.smartagricultureplus.DiyView.TabView
             android:id="@+id/tb_bt_wechat1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
-        <com.myapp.smartagricultureplus.TabView
+        <com.myapp.smartagricultureplus.DiyView.TabView
             android:id="@+id/tb_bt_wechat2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
-        <com.myapp.smartagricultureplus.TabView
+        <com.myapp.smartagricultureplus.DiyView.TabView
             android:id="@+id/tb_bt_wechat3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
-        <com.myapp.smartagricultureplus.TabView
+        <com.myapp.smartagricultureplus.DiyView.TabView
             android:id="@+id/tb_bt_wechat4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

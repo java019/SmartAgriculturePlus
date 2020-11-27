@@ -1,7 +1,6 @@
-package com.myapp.smartagricultureplus;
+package com.myapp.smartagricultureplus.Activity;
 
 import android.os.Bundle;
-import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,6 +10,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.myapp.smartagricultureplus.DiyView.TabView;
+import com.myapp.smartagricultureplus.Fragment.Contror_Fragment;
+import com.myapp.smartagricultureplus.Fragment.Home_Fragment;
+import com.myapp.smartagricultureplus.Fragment.Me_Fragment;
+import com.myapp.smartagricultureplus.Fragment.Monitor_Fragment;
+import com.myapp.smartagricultureplus.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,15 +24,19 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
-    private com.myapp.smartagricultureplus.TabView tb_wechat1, tb_wechat2, tb_wechat3, tb_wechat4;
+    private TabView tb_wechat1, tb_wechat2, tb_wechat3, tb_wechat4;
 
     private List<String> mtitls = new ArrayList<>(Arrays.asList("首页", "检测", "控制", "我的"));
-    private SparseArray<Tab_fragment> frag = new SparseArray<>();
-    private List<com.myapp.smartagricultureplus.TabView> mtad = new ArrayList<>();
+    private List<TabView> mtad = new ArrayList<>();
 
     private static final String BUNDLE_KEY_POS = "bundle_key_pos";
 
     private int mCurTabPos;
+
+    private Home_Fragment home_fragment;
+    private Monitor_Fragment monitor_fragment;
+    private Contror_Fragment contror_fragment;
+    private Me_Fragment me_fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     private void initend() {
 
         for (int i = 0; i < mtad.size(); i++) {
-            com.myapp.smartagricultureplus.TabView view = mtad.get(i);
+            TabView view = mtad.get(i);
             //点击事件 切换页面
             final int finalI = i;
             view.setOnClickListener(new View.OnClickListener() {
@@ -82,9 +92,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public Fragment getItem(int position) {
 
+                switch (position)
+                {
+                    case 1:
+                        return monitor_fragment = new Monitor_Fragment();
+                    case 2:
+                        return contror_fragment = new Contror_Fragment();
+                    case 3:
+                        return me_fragment = new Me_Fragment();
+                }
 
-                Tab_fragment fragment = Tab_fragment.newInstance(mtitls.get(position));
-                return fragment;
+//                Tab_fragment fragment = Tab_fragment.newInstance(mtitls.get(position));
+                return home_fragment=new Home_Fragment();
             }
 
             @Override
@@ -95,14 +114,13 @@ public class MainActivity extends AppCompatActivity {
             @NonNull
             @Override
             public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                Tab_fragment tab_fragment = (Tab_fragment) super.instantiateItem(container, position);
-                frag.put(position, tab_fragment);
-                return tab_fragment;
+//
+                return super.instantiateItem(container,position);
             }
 
             @Override
             public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-                frag.remove(position);
+//                frag.remove(position);
                 super.destroyItem(container, position, object);
             }
         });
@@ -120,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
                 //left 效果 :0~1 （1-positionOffset）；rigth 效果：1~0（positionOffset）
 
                 if (positionOffset > 0) {
-                    com.myapp.smartagricultureplus.TabView left = mtad.get(position);
-                    com.myapp.smartagricultureplus.TabView rigth = mtad.get(position + 1);
+                    TabView left = mtad.get(position);
+                    TabView rigth = mtad.get(position + 1);
 
                     //回划时候的算法
                     left.setprogress(1 - (positionOffset));
@@ -154,16 +172,11 @@ public class MainActivity extends AppCompatActivity {
         mtad.add(tb_wechat4);
 
 
-        tb_wechat1.setIconandText(R.mipmap.we_chat1, R.mipmap.we_chat_colour1, "首页");
-        tb_wechat2.setIconandText(R.mipmap.we_chat2, R.mipmap.we_chat_colour2, "检测");
-        tb_wechat3.setIconandText(R.mipmap.we_chat3, R.mipmap.we_chat_colour3, "控制");
-        tb_wechat4.setIconandText(R.mipmap.we_chat4, R.mipmap.we_chat_colour4, "我的");
+        tb_wechat1.setIconandText(R.mipmap.home_img, R.mipmap._home_img, "首页");
+        tb_wechat2.setIconandText(R.mipmap.monitor_img, R.mipmap._monitor_img, "检测");
+        tb_wechat3.setIconandText(R.mipmap.control_img, R.mipmap._control_img, "控制");
+        tb_wechat4.setIconandText(R.mipmap.me_img, R.mipmap._me_img, "我的");
 
-
-//        tb_wechat1.setOnClickListener(this);
-//        tb_wechat2.setOnClickListener(this);
-//        tb_wechat3.setOnClickListener(this);
-//        tb_wechat4.setOnClickListener(this);
 
         setCurrentTab(mCurTabPos);
     }
@@ -171,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
     private void setCurrentTab(int pos) {    /**tab的点击切换页面*/
 
         for (int i = 0; i < mtad.size(); i++) {
-            com.myapp.smartagricultureplus.TabView view = mtad.get(i);
+            TabView view = mtad.get(i);
             if (i == pos) {
                 view.setprogress(1);
             } else {

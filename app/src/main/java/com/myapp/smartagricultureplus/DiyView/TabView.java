@@ -1,4 +1,4 @@
-package com.myapp.smartagricultureplus;
+package com.myapp.smartagricultureplus.DiyView;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.myapp.smartagricultureplus.R;
 
 public class TabView extends FrameLayout {
     private ImageView mIvicon;
@@ -29,7 +31,7 @@ public class TabView extends FrameLayout {
 
         mIvicon = findViewById(R.id.iv_icon);
         mIviconselect = findViewById(R.id.iv_icon_select);
-//        te_tab_view = findViewById(R.id.te_tab_view);
+        te_tab_view = findViewById(R.id.tb_text);
 
         setprogress(0);
     }
@@ -42,7 +44,7 @@ public class TabView extends FrameLayout {
         //这里我用的第二种方法
         mIvicon.setImageResource(icon);
         mIviconselect.setImageResource(iconselect);
-//        te_tab_view.setText(text);
+        te_tab_view.setText(text);
     }
 
     public  void setprogress(float progrss)
@@ -51,7 +53,7 @@ public class TabView extends FrameLayout {
 
 
         mIviconselect.setAlpha(progrss);
-//        te_tab_view.setTextColor(evaluate(progrss,COLOR_DEFAULT,COLOR_SELECT));
+        te_tab_view.setTextColor(evaluate(progrss,COLOR_DEFAULT,COLOR_SELECT));
     }
     private int evaluate(float fraction, int startValue, int endValue) {
         int startInt = (Integer) startValue;

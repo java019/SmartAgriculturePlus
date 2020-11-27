@@ -14,24 +14,24 @@
 
         <ImageView
             android:id="@+id/iv_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:src="@mipmap/we_chat1"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            tools:src="@mipmap/home_img"/>
         <ImageView
             android:id="@+id/iv_icon_select"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:src="@mipmap/we_chat_colour1"/>
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            tools:src="@mipmap/_home_img"/>
 
 
 
     </FrameLayout>
-<!--<TextView-->
-<!--    android:id="@+id/te_tab_view"-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:text="微信"-->
-<!--    android:textColor="#000"-->
-<!--    android:layout_gravity="center_horizontal"-->
-<!--    android:textSize="16sp"/>-->
+<TextView
+    android:id="@+id/tb_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="微信"
+    android:textColor="#000"
+    android:layout_gravity="center_horizontal"
+    android:textSize="12sp"/>
 </LinearLayout>
