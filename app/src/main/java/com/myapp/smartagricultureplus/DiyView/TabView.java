@@ -17,8 +17,8 @@ public class TabView extends FrameLayout {
     private ImageView mIviconselect;
     private TextView  te_tab_view;
 
-    private static final  int COLOR_DEFAULT = Color.parseColor("#bfbfbf");
-    private static final  int COLOR_SELECT = Color.parseColor("#1296db");
+    private static final  int COLOR_DEFAULT = Color.parseColor("#ff0000");
+    private static final  int COLOR_SELECT = Color.parseColor("#FF45C01A");
     public TabView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
