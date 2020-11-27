@@ -25,10 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabView tb_wechat1, tb_wechat2, tb_wechat3, tb_wechat4;
-
     private List<String> mtitls = new ArrayList<>(Arrays.asList("首页", "检测", "控制", "我的"));
     private List<TabView> mtad = new ArrayList<>();
-
     private static final String BUNDLE_KEY_POS = "bundle_key_pos";
 
     private int mCurTabPos;
